@@ -282,12 +282,12 @@ export const realtedProductController = async (req, res) => {
     const { pid, cid } = req.params;
     const products = await productModel
       .find({
-        _id: { $ne: pid },
         category: cid,
+        _id: { $ne: pid },
       })
       .select("-photo")
       .limit(3)
-      .populate("category")
+ 
     res.status(200).send({
       success: true,
       products,
