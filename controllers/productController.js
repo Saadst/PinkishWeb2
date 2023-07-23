@@ -287,6 +287,7 @@ export const realtedProductController = async (req, res) => {
       })
       .select("-photo")
       .limit(3)
+      .populate("category")
     res.status(200).send({
       success: true,
       products,
