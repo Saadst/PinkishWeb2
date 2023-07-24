@@ -2,13 +2,13 @@ import express from "express";
 import dotenv from "dotenv"
 import colors from "colors";
 import morgan from "morgan";
-import { connect } from "mongoose";
+import mongoose from "mongoose";
 import connectDB from "./cofig/db.js";
 import authRoutes from './routes/authRoute.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import path from "path"
-
+import {fileURLToPath} from "url"
 import cors from 'cors'
 
 // configure dotenv
@@ -16,6 +16,11 @@ dotenv.config()
 
 // database config
 connectDB()
+
+// esmodule fix
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename) 
+
 
 // rest object
 const app = express()
